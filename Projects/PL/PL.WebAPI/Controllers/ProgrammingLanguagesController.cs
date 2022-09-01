@@ -52,7 +52,7 @@ namespace PL.WebAPI.Controllers
         public async Task<IActionResult> Delete([FromRoute] DeleteProgrammingLanguageCommand deleteProgrammingLanguageCommand)
         {
             DeletedProgrammingLanguageDto res = await Mediator.Send(deleteProgrammingLanguageCommand);
-            //sadasd
+            
             return Ok(res);
         }
     }
