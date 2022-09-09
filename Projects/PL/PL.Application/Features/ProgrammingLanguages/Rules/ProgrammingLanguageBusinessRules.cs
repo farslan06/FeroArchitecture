@@ -25,7 +25,7 @@ namespace PL.Application.Features.ProgrammingLanguages.Rules
             if (res.Items.Any()) throw new BusinessException("Programming language exists");
         }
 
-        public async Task ProgrammingLanguageShouldExistWhenDelete(int id)
+        public async Task ProgrammingLanguageShouldExists(int id)
         {
             ProgrammingLanguage res = await _programmingLanguageRepository.GetAsync(p => p.Id == id);
             if (res == null) throw new BusinessException("Programming Language does not exist");

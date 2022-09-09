@@ -31,7 +31,7 @@ namespace PL.Application.Features.ProgrammingLanguages.Commands.DeleteProgrammin
 
             public async Task<DeletedProgrammingLanguageDto> Handle(DeleteProgrammingLanguageCommand request, CancellationToken cancellationToken)
             {
-                await _programmingLanguageBusinessRules.ProgrammingLanguageShouldExistWhenDelete(request.Id);
+                await _programmingLanguageBusinessRules.ProgrammingLanguageShouldExists(request.Id);
 
                 ProgrammingLanguage pL = await _programmingLanguageRepository.GetAsync(p => p.Id == request.Id);
                 ProgrammingLanguage res =await _programmingLanguageRepository.DeleteAsync(pL);

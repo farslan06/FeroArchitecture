@@ -17,8 +17,10 @@ namespace PL.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services,IConfiguration configuration)
         {
+            //services.AddDbContext<MyContext>(ServiceLifetime.Transient);
             services.AddDbContext<BaseDbContext>(op => op.UseSqlServer(configuration.GetConnectionString("PLConnectionString")));
             services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
+            services.AddScoped<ITechnologyRepository, TechnologyRepository>();
 
             return services;
         }
