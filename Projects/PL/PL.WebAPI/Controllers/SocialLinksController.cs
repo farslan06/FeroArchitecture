@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PL.Application.Features.SocialLinks.Commands.CreateSocialLink;
 using PL.Application.Features.SocialLinks.Commands.DeleteSocialLink;
@@ -11,6 +12,7 @@ namespace PL.WebAPI.Controllers
     [ApiController]
     public class SocialLinksController : BaseController
     {
+        
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateSocialLinkCommand createSocialLinkCommand)
         {

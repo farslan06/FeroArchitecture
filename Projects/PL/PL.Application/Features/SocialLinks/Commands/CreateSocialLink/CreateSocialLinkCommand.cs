@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using MediatR;
 using PL.Application.Features.SocialLinks.Dtos;
 using PL.Application.Features.SocialLinks.Rules;
@@ -12,11 +13,13 @@ using System.Threading.Tasks;
 
 namespace PL.Application.Features.SocialLinks.Commands.CreateSocialLink
 {
-    public class CreateSocialLinkCommand:IRequest<CreatedSocialLinkDto>
+    public class CreateSocialLinkCommand:IRequest<CreatedSocialLinkDto>,ISecuredRequest
     {
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Link { get; set; }
+
+        public string[] Roles => new[] { "Admin" };
 
         public class CreateSocialLinkCommandHandler : IRequestHandler<CreateSocialLinkCommand, CreatedSocialLinkDto>
         {
